@@ -1,5 +1,4 @@
 import requests
-import random
 
 
 class TodosDummyRequests:
@@ -17,8 +16,7 @@ class TodosDummyRequests:
 
     def get_todo_by_random(self):
         url = f"{self._BASE_URL}/random"
-        # random_number = random.randint(1, 150)
-        resp = requests.get(url=url)  #json=random_number
+        resp = requests.get(url=url)
         return resp
 
     def get_limit_and_skip_todos(self, limit=None, skip=None):
@@ -34,7 +32,7 @@ class TodosDummyRequests:
         return resp
 
     def get_all_todos_by_user_id(self, user_id):
-        url = f"{self._BASE_URL}/{user_id}"
+        url = f"{self._BASE_URL}/user/{user_id}"
         resp = requests.get(url=url)
         return resp
 

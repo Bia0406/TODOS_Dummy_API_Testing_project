@@ -1,0 +1,1569 @@
+{
+	"info": {
+		"_postman_id": "977fbe46-0778-433b-9f47-489a581ac4e9",
+		"name": "PYTA05 Tests Todos Dummy REST API of JSON",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28335882"
+	},
+	"item": [
+		{
+			"name": "GET ALL TODOS",
+			"item": [
+				{
+					"name": "Get all todos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem in response \"userId\"\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contains userId\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"userId\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca avem in response \"todo\"\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contains todo\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"todo\");\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam ca avem in response \"completed\"\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contains completed\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"completed\");\r",
+									"});\r",
+									"\r",
+									"// Test 7: Testam ca obtinem cel putin un todo\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"There is at least one todo\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos.length).greaterThan(0);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/todos",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET A SINGLE TODO",
+			"item": [
+				{
+					"name": "Get todo when id exists in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem \"todo\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contains todo\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"todo\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca avem in response \"userId\"\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contains userId\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"userId\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/todos/1",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get todo when id DOES NOT exists in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is Not Found\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca avem \"message\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response has message in error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"message\");\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca mesajul de eroare asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Todo with id '151' not found\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos/151",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"151"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET A RANDOM TODO",
+			"item": [
+				{
+					"name": "Get a random todo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem in response \"id\"\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contains id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca avem in response \"todo\"\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contains todo\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"todo\");\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam ca obtinem cel putin un todo\r",
+									"// Snippet: Response body: JSON value check\r",
+									"pm.test(\"There is at least one todo\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todo.length).greaterThan(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos/random",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"random"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET LIMIT AND SKIP TODOS",
+			"item": [
+				{
+					"name": "Get all todos when limit is in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test('Status code is 200', function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test('Status code name is OK', function () {\r",
+									"    pm.response.to.have.status('OK');\r",
+									"})\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test('Response time is less than 5 seconds', function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"})\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"completed\" in response\r",
+									"// Snippet: Contains string\r",
+									"\r",
+									"pm.test('There is string completed in response', function () {\r",
+									"    pm.expect(pm.response.text()).to.include('completed');\r",
+									"})\r",
+									"\r",
+									"// Test 5: Testam atributele pt primul todo\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Check first todos id characteristics\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos[0].id).to.eql(1);\r",
+									"    pm.expect(jsonData.todos[0].todo).to.eql(\"Do something nice for someone I care about\");\r",
+									"    pm.expect(jsonData.todos[0].completed).to.eql(true);\r",
+									"    pm.expect(jsonData.todos[0].userId).to.eql(26);\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam ca s-au returnat exact 20 todos\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"There are exactly 20 id todos received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos.length).to.eql(20);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos?limit=20",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all todos when limit is NOT in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca s-au returnat exact 150 todos\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"There are exactly 150 id todos received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos.length).to.eql(150);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca avem string-ul \"userId\" in response\r",
+									"// Snippet: Contains string\r",
+									"\r",
+									"pm.test(\"There is string userId in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"userId\");\r",
+									"});\r",
+									"\r",
+									"// Test 6: Testam atributele pt primul todo\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Check first todos id characteristics\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos[0].id).to.eql(1);\r",
+									"    pm.expect(jsonData.todos[0].todo).to.eql(\"Do something nice for someone I care about\");\r",
+									"    pm.expect(jsonData.todos[0].completed).to.eql(true);\r",
+									"    pm.expect(jsonData.todos[0].userId).to.eql(26);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos?limit=180",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "180"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all todos when limit is a negative number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca s-au returnat exact 148 todos\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"There are exactly 148 todos received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos.length).to.eql(148);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca avem string-ul \"userId\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"There is string userId in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"userId\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos?limit=-2",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "-2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all todos when limit is not a number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 400\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Bad Request\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is Bad Request\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"message\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contain message error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"message\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam mesajul de eroare ca este cel asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Invalid limit\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos?limit=x",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "x"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all todos when skip is in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"id\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"There is string id in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca s-au returnat exact 30 todos\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"There are exactly 30 id todos received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos.length).to.eql(30);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos?skip=10",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all todos when skip is NOT in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"skip\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"There is string skip in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"skip\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca nu s-au returnat 0 todos\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"There are exactly 0 id todos received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos.length).to.eql(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos?skip=180",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "180"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all todos when limit and skip are in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"id\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"There is string id in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca s-au returnat exact 20 todos\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"There are exactly 20 id todos received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos.length).to.eql(20);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos?limit=20&skip=10",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "skip",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all todos when limit and skip are NOT in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"id\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"There is string id in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"limit\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca s-au returnat exact 0 todos\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"There are exactly 0 id todos received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos.length).to.eql(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos?limit=180&skip=160",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "180"
+								},
+								{
+									"key": "skip",
+									"value": "160"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET ALL TODOS BY USER ID",
+			"item": [
+				{
+					"name": "Get all todos by user id when exists in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"id\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"pm.test(\"There is string id in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam ca s-au returnat exact 3 todos\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"There are exactly 5 id todos received\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.todos.length).to.eql(5);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos/user/1",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all todos by user id when exists NOT in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is Not Found\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"message\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contain message error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"message\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam mesajul de eroare ca este cel asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"User with id '161' not found\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos/user/161",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"user",
+								"161"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADD NEW TODO",
+			"item": [
+				{
+					"name": "Add a todo when userId is in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"id\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"There is string id in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"todo\": \"Use DummyJSON in the project\",\r\n  \"completed\": false,\r\n  \"userId\": 5\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/todos/add",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a todo when userId is NOT in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is Not Found\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca avem \"message\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response has message in error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"message\");\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca mesajul de eroare asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"User with id '160' not found\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"todo\": \"Use DummyJSON in the project\",\r\n  \"completed\": false,\r\n  \"userId\": 160\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/todos/add",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a todo when userId number is Nul",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 400\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Bad Request\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is Bad Request\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca avem \"message\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response has message in error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"message\");\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca mesajul de eroare asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"User id is required\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"todo\": \"Do something beautiful for someone I care about\",\r\n  \"completed\": false,\r\n  \"userId\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/todos/add",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UPDATE TODO",
+			"item": [
+				{
+					"name": "Update todo that exists in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"completed\" in response\r",
+									"// Snippet: Contains string\r",
+									"\r",
+									"pm.test('There is string completed in response', function () {\r",
+									"    pm.expect(pm.response.text()).to.include('completed');\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"completed\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/todos/1",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update todo that does NOT exists in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is Not Found\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam ca avem \"message\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response has message in error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"message\");\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca mesajul de eroare asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Todo with id '151' not found\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"completed\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/todos/151",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"151"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE TODO",
+			"item": [
+				{
+					"name": "Delete todo when id exists in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 200\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este OK\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"isDeleted\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"There is string id in response\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"isDeleted\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos/150",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"150"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete todo when id does NOT exists in db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test 1: Testam ca status code-ul este 404\r",
+									"// Snippet: Status code: Code is 200\r",
+									"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Test 2: Testam ca numele status code-ului este Not Found\r",
+									"// Snippet: Status code: Code name has string\r",
+									"\r",
+									"pm.test(\"Status code name is Not Found\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Testam performanta request-ului\r",
+									"// Snippet: Response time is less than 200ms\r",
+									"\r",
+									"pm.test(\"Response time is less than 5 seconds\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+									"});\r",
+									"\r",
+									"// Test 4: Testam ca avem string-ul \"message\" in response\r",
+									"// Snippet: Response body: Contains string\r",
+									"\r",
+									"pm.test(\"Response contain message error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"message\");\r",
+									"});\r",
+									"\r",
+									"// Test 5: Testam mesajul de eroare ca este cel asteptat\r",
+									"// Snippet: Response body: JSON value check\r",
+									"\r",
+									"pm.test(\"Check error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Todo with id '152' not found\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/todos/152",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"todos",
+								"152"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

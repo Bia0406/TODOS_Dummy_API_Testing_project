@@ -2,25 +2,38 @@ import requests
 
 
 class TodosDummyRequests:
-    _BASE_URL = "https://dummyjson.com/docs/todos"
+    BASE_URL = "https://dummyjson.com/docs/todos"
+    AUTH_URL = "https://dummyjson.com/auth/login"
+
+    def __init__(self):
+        self.token = self.generate_token()
+
+    def generate_token(self):
+        url = self.AUTH_URL
+        request_body = {
+                "username": "kminchelle",
+                "password": "0lelplR"
+        }
+        resp = requests.post(url=url, json=request_body)
+        return resp
 
     def get_all_todos(self):
-        url = f"{self._BASE_URL}"
+        url = f"{self.BASE_URL}"
         resp = requests.get(url=url)
         return resp
 
     def get_single_todo_by_id(self, todo_id):
-        url = f"{self._BASE_URL}/{todo_id}"
+        url = f"{self.BASE_URL}/{todo_id}"
         resp = requests.get(url=url)
         return resp
 
     def get_todo_by_random(self):
-        url = f"{self._BASE_URL}/random"
+        url = f"{self.BASE_URL}/random"
         resp = requests.get(url=url)
         return resp
 
     def get_limit_and_skip_todos(self, limit=None, skip=None):
-        url = f"{self._BASE_URL}"
+        url = f"{self.BASE_URL}"
 
         request_params = {}
         if limit is not None:
@@ -32,12 +45,12 @@ class TodosDummyRequests:
         return resp
 
     def get_all_todos_by_user_id(self, user_id):
-        url = f"{self._BASE_URL}/user/{user_id}"
+        url = f"{self.BASE_URL}/user/{user_id}"
         resp = requests.get(url=url)
         return resp
 
     def add_new_todo(self, todo, completed, userId):
-        url = f"{self._BASE_URL}/add"
+        url = f"{self.BASE_URL}/add"
         request_body = {
             "todo": todo,
             "completed": completed,
@@ -47,7 +60,7 @@ class TodosDummyRequests:
         return resp
 
     def update_todo(self, todo_id, completed):
-        url = f"{self._BASE_URL}/{todo_id}"
+        url = f"{self.BASE_URL}/{todo_id}"
         request_body = {
              "completed": completed
         }
@@ -55,14 +68,15 @@ class TodosDummyRequests:
         return resp
 
     def delete_todo(self, todo_id):
-        url = f"{self._BASE_URL}/{todo_id}"
+        url = f"{self.BASE_URL}/{todo_id}"
         resp = requests.delete(url=url)
         return resp
 
 
 obj = TodosDummyRequests()
-# response1 = obj.get_all_todos()
-# print(response1.status_code)
+response1 = obj.get_all_todos()
+print(response1.status_code)
+# print(response1.json())
 
 # response2 = obj.get_single_todo_by_id(1)
 # print(response2.status_code)

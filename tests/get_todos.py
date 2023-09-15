@@ -22,5 +22,7 @@ class TestGetTodos(unittest.TestCase):
         response = self.requests_handler.get_all_todos()
         expected_status_code = 200
         expected_number_text_todos = 23328
+        # expected_number_todos = 30
         self.assertEqual(expected_status_code, response.status_code)
         self.assertEqual(expected_number_text_todos, len(response.text))
+        # self.assertEqual(expected_number_todos, len(response.json()))

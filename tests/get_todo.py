@@ -18,7 +18,6 @@ class TestGetTodo(unittest.TestCase):
         - the status code is 200
         - we receive a todo with the specified todo_id
         """
-        self.requests_handler.add_new_todo(todo="Do something nice for someone I care about", completed="false", userId=26)
         todo_id = 1
         response = self.requests_handler.get_single_todo_by_id(todo_id=todo_id)
         expected_status_code = 404

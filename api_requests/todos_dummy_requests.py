@@ -76,7 +76,6 @@ class TodosDummyRequests:
 obj = TodosDummyRequests()
 response1 = obj.get_all_todos()
 print(response1.status_code)
-# print(response1.json())
 
 # response2 = obj.get_single_todo_by_id(1)
 # print(response2.status_code)

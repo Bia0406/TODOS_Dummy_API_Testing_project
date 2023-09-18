@@ -16,13 +16,16 @@ class TestGetTodo(unittest.TestCase):
         """
         Check:
         - the status code is 200
-        - we receive a todo with the specified todo_id
+        - the status code name is OK
+        - in response we have the todo id equal with 1
         """
         todo_id = 1
         response = self.requests_handler.get_single_todo_by_id(todo_id=todo_id)
-        expected_status_code = 404
+        expected_status_code = 200
+        expected_api_status = "OK"
         self.assertEqual(expected_status_code, response.status_code)
-        self.assertEqual(todo_id, len(response.text[1]))
+        self.assertEqual(expected_api_status, response.reason)
+        self.assertEqual(todo_id, response.json()['id'])
 
     def test_get_todo_when_id_does_not_exists_in_db(self):
         """
@@ -33,6 +36,8 @@ class TestGetTodo(unittest.TestCase):
 
         response = self.requests_handler.get_single_todo_by_id(todo_id=151)
         expected_status_code = 404
-        expected_error = 'not found!'
+        expected_api_status = "Not Found"
+        expected_error = "Todo with id '151' not found"
         self.assertEqual(expected_status_code, response.status_code)
-        self.assertEqual(expected_error, response.text)
+        self.assertEqual(expected_api_status, response.reason)
+        self.assertEqual(expected_error, response.json()['message'])

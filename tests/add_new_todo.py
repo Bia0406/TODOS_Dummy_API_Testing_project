@@ -5,7 +5,7 @@ from api_requests.todos_dummy_requests import TodosDummyRequests
 
 class TestAddNewTodo(unittest.TestCase):
     """
-    Testam ruta POST /add
+    Testing the route GET /add
     Exemple of request body:
        {
     "todo": "Use DummyJSON in the project",
@@ -21,48 +21,51 @@ class TestAddNewTodo(unittest.TestCase):
         """
         Check:
         - the status code is 200
-        - we receive a todo with a new id(next id = 151)
+        - the status code name is OK
+        - in response we receive a todo with a new id(next id = 151)
+        - in response we have the key userId equal with 5, exactly as in the request body
         """
 
         response = self.requests_handler.add_new_todo(todo="Use DummyJSON in the project", completed=False, userId=5)
-        expected_status_code = 404
-        expected_id_todo = 'l'
+        expected_status_code = 200
+        expected_response_status = "OK"
+        expected_id = 151
+        expected_user_id = 5
         self.assertEqual(expected_status_code, response.status_code)
-        self.assertEqual(expected_id_todo, response.text[151])
+        self.assertEqual(expected_response_status, response.reason)
+        self.assertEqual(expected_id, response.json()["id"])
+        self.assertEqual(expected_user_id, response.json()["userId"])
 
     def test_todo_when_user_id_is_not_in_db(self):
         """
         Check:
         - the status code is 404
-        - in response I got the expected error
+        - the status code name is "Not Found
+        - in response we receive the expected error
         """
 
         response = self.requests_handler.add_new_todo(todo="Use DummyJSON in the project", completed=False, userId=160)
         expected_status_code = 404
-        expected_error = ('<!DOCTYPE html>\n'
-                        '<html lang="en">\n'
-                        '<head>\n'
-                        '<meta charset="utf-8">\n'
-                        '<title>Error</title>\n'
-                        '</head>\n'
-                        '<body>\n'
-                        '<pre>Cannot POST /docs/todos/add</pre>\n'
-                        '</body>\n'
-                        '</html>\n')
+        expected_response_status = "Not Found"
+        expected_error = "User with id '160' not found"
         self.assertEqual(expected_status_code, response.status_code)
-        self.assertEqual(expected_error, response.text)
+        self.assertEqual(expected_response_status, response.reason)
+        self.assertEqual(expected_error, response.json()["message"])
 
     def test_todo_when_user_id_is_null(self):
         """
         Check:
         - the status code is 400
+        - the status code name is "Bad Request"
         - in response I got the expected error
         """
 
         response = self.requests_handler.add_new_todo(todo="Use DummyJSON in the project", completed=False, userId=0)
-        expected_status_code = 404
-        expected_error = "<"
+        expected_status_code = 400
+        expected_response_status = "Bad Request"
+        expected_error = "User id is required"
         self.assertEqual(expected_status_code, response.status_code)
-        self.assertEqual(expected_error, response.text[0])
+        self.assertEqual(expected_response_status, response.reason)
+        self.assertEqual(expected_error, response.json()["message"])
 
 

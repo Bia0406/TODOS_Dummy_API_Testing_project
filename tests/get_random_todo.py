@@ -16,12 +16,17 @@ class TestGetRandomTodo(unittest.TestCase):
         """
         Check:
         - the status code is 200
-        - we receive a todo every time random id and userId
+        - the status code name is OK
+        - in response we have 4 key - value
+        - in response we have the key 'id'
         """
         response = self.requests_handler.get_todo_by_random()
         expected_status_code = 200
         expected_api_status = "OK"
-        expected_response = 1
+        expected_key_value = 4
+        expected_key = "id"
         self.assertEqual(expected_status_code, response.status_code)
-        self.assertEqual(expected_response, len(response.text[1]))
         self.assertEqual(expected_api_status, response.reason)
+        self.assertEqual(expected_key_value, len(response.json()))
+        self.assertIn(expected_key, response.json())
+

@@ -6,7 +6,7 @@ from tests.delete_todo import TestDeleteTodo
 from tests.get_limit_and_skip_todos import TestGetLimitAndSkipTodos
 from tests.get_random_todo import TestGetRandomTodo
 from tests.get_todo import TestGetTodo
-from tests.get_todos import TestGetTodos
+from tests.get_all_todos import TestGetTodos
 from tests.get_todos_by_user_id import TestGetTodosByUserId
 from tests.update_todo import TestUpdateTodo
 

@@ -2,23 +2,10 @@ import requests
 
 
 class TodosDummyRequests:
-    BASE_URL = "https://dummyjson.com/docs/todos"
-    AUTH_URL = "https://dummyjson.com/auth/login"
-
-    def __init__(self):
-        self.token = self.generate_token()
-
-    def generate_token(self):
-        url = self.AUTH_URL
-        request_body = {
-                "username": "kminchelle",
-                "password": "0lelplR"
-        }
-        resp = requests.post(url=url, json=request_body)
-        return resp
+    BASE_URL = "https://dummyjson.com/todos"
 
     def get_all_todos(self):
-        url = f"{self.BASE_URL}"
+        url = self.BASE_URL
         resp = requests.get(url=url)
         return resp
 
@@ -33,7 +20,7 @@ class TodosDummyRequests:
         return resp
 
     def get_limit_and_skip_todos(self, limit=None, skip=None):
-        url = f"{self.BASE_URL}"
+        url = self.BASE_URL
 
         request_params = {}
         if limit is not None:
@@ -76,24 +63,5 @@ class TodosDummyRequests:
 obj = TodosDummyRequests()
 response1 = obj.get_all_todos()
 print(response1.status_code)
+print(response1.json())
 
-# response2 = obj.get_single_todo_by_id(1)
-# print(response2.status_code)
-
-# response3 = obj.get_todo_by_random()
-# print(response3.status_code)
-
-# response4 = obj.get_limit_and_skip_todos()
-# print(response4.status_code)
-
-# response5 = obj.get_all_todos_by_user_id(1)
-# print(response5.status_code)
-
-# response6 = obj.add_new_todo("Use DummyJSON in the project", False, 25)
-# print(response6.status_code)
-
-# response7 = obj.update_todo(2, False)
-# print(response7.status_code)
-
-# response8 = obj.delete_todo(150)
-# print(response8.status_code)

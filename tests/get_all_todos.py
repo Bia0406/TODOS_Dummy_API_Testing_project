@@ -16,11 +16,19 @@ class TestGetTodos(unittest.TestCase):
         """
         Check:
         - the status code is 200
-        - in response we have todos that are in the database
+        - the status code name is OK
+        - in response we have total 150 todos
+        - in response we have limit 30 todos
+
         """
 
         response = self.requests_handler.get_all_todos()
         expected_status_code = 200
-        expected_number_text_todos = 23328
+        expected_api_status = "OK"
+        expected_number_total_todos = 150
+        expected_todos = 30
         self.assertEqual(expected_status_code, response.status_code)
-        self.assertEqual(expected_number_text_todos, len(response.text))
+        self.assertEqual(expected_api_status, response.reason)
+        self.assertEqual(expected_number_total_todos, response.json()["total"])
+        self.assertEqual(expected_todos, response.json()["limit"])
+

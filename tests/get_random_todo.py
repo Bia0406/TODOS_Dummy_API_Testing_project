@@ -19,7 +19,9 @@ class TestGetRandomTodo(unittest.TestCase):
         - we receive a todo every time random id and userId
         """
         response = self.requests_handler.get_todo_by_random()
-        expected_status_code = 404
+        expected_status_code = 200
+        expected_api_status = "OK"
         expected_response = 1
         self.assertEqual(expected_status_code, response.status_code)
         self.assertEqual(expected_response, len(response.text[1]))
+        self.assertEqual(expected_api_status, response.reason)

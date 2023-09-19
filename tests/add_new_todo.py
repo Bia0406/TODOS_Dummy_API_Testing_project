@@ -5,7 +5,7 @@ from api_requests.todos_dummy_requests import TodosDummyRequests
 
 class TestAddNewTodo(unittest.TestCase):
     """
-    Testing the route GET /add
+    Testing the route POST /add
     Exemple of request body:
        {
     "todo": "Use DummyJSON in the project",

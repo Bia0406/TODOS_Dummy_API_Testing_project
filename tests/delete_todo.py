@@ -6,7 +6,7 @@ from api_requests.todos_dummy_requests import TodosDummyRequests
 class TestDeleteTodo(unittest.TestCase):
 
     """
-    Testam ruta DELETE /<todo_id>
+    Testing the route DELETE /<todo_id>
     """
 
     def setUp(self):
@@ -18,6 +18,7 @@ class TestDeleteTodo(unittest.TestCase):
         - the status code is 200
         - we receive a todo with the specified todo_id
         """
+
         response = self.requests_handler.delete_todo(todo_id=150)
         expected_status_code = 404
         expected_todos_response = 1

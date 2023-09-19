@@ -30,6 +30,7 @@ class TestDeleteTodo(unittest.TestCase):
         self.assertEqual(expected_response_status, response.reason)
         self.assertEqual(expected_response_key_id, response.json()["id"])
         self.assertEqual(expected_response_key_is_deleted, response.json()["isDeleted"])
+        self.assertTrue(response.json()["isDeleted"])
 
     def test_delete_todo_when_id_exists_not_in_db(self):
         """

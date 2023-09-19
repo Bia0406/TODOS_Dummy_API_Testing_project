@@ -17,28 +17,15 @@ class TestSuite(unittest.TestCase):
         tests_to_run = unittest.TestSuite()
 
         tests_to_run.addTests([
-            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetTodos)])
-
-        tests_to_run.addTests([
-            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetTodo)])
-
-        tests_to_run.addTests([
-            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetRandomTodo)])
-
-        tests_to_run.addTests([
-            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetLimitAndSkipTodos)])
-
-        tests_to_run.addTests([
-            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetTodosByUserId)])
-
-        tests_to_run.addTests([
-            unittest.defaultTestLoader.loadTestsFromTestCase(TestAddNewTodo)])
-
-        tests_to_run.addTests([
-            unittest.defaultTestLoader.loadTestsFromTestCase(TestUpdateTodo)])
-
-        tests_to_run.addTests([
-            unittest.defaultTestLoader.loadTestsFromTestCase(TestDeleteTodo)])
+            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetTodos),
+            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetTodo),
+            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetRandomTodo),
+            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetLimitAndSkipTodos),
+            unittest.defaultTestLoader.loadTestsFromTestCase(TestGetTodosByUserId),
+            unittest.defaultTestLoader.loadTestsFromTestCase(TestAddNewTodo),
+            unittest.defaultTestLoader.loadTestsFromTestCase(TestUpdateTodo),
+            unittest.defaultTestLoader.loadTestsFromTestCase(TestDeleteTodo)
+        ])
 
         runner = HtmlTestRunner.HTMLTestRunner(
             combine_reports=True,
